@@ -6,7 +6,7 @@ const app = express();
 
 
 
-app.use(express.json())
+app.use(express.json());
 
 app.listen(3333, ( )=>{
     console.log('🚀 Backend started!')
@@ -40,22 +40,35 @@ app.put('/projects/:id' , (request, response)=>{
     const{id} = request.params;
     const {title, owner} = request.body;
    
-    const projectIndex = projects.findIndex(project =>project.id =id);
-if(projectIndex < 0){
-    return response.status(400).json({error: 'project not found'});
+    const projectIndex = projects.findIndex(project =>project.id ===id);
+if(projectIndex < 0 ) {
+    return response.status(400).json({error: 'project not found'})
 }
-const project={};
+const project={
+    id,
+    title,
+    owner,
+};
+
+projects[projectIndex] = project;
+return response.json(project);
 
   
     
 });
 
 app.delete('/projects/:id' , (request, response)=>{
-    return response.json([
-        'Projecto 1',
-        'Projecto 2',
-        'Projecto 3'
-    ]);
+  const {id} = request.params;
+
+  const projectIndex = projects.findIndex(project =>project.id ===id);
+  if(projectIndex < 0 ) {
+      return response.status(400).json({error: 'project not found'})
+
+  }
+  projects.splice(projectIndex, 1);
+
+  
+    return response.status(204).send('usuario deletado com sucesso');
 
     
 })
