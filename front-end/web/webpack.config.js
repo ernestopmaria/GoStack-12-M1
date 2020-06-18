@@ -7,6 +7,9 @@ module.exports = {
         path: path.resolve(__dirname, 'public'),
         filename: 'bundle.js'
     },
+    devServer: {
+        contentBase: path.resolve(__dirname, "public")
+      },
 
     module:{
         rules:[
@@ -19,4 +22,5 @@ module.exports = {
         }
         ]
     },
+    
 };
