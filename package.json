@@ -1,5 +1,5 @@
 {
   "dependencies": {
-    "uuid": "^8.1.0"
+    "@babel/cli": "^7.10.1"
   }
 }
