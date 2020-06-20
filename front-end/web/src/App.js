@@ -20,13 +20,18 @@ function App(){
     1. variavel com o seu valor inicial
     2*função para atualizar esse valor
     */
-    function handleAddProject(){
-        //projects.push(`Novo project ${Date.now()}`);
-        
-        setProjects([...projects,`Novo project ${Date.now()}` ])
-
-        console.log(projects)
+    async function handleAddProject(){        
+        //setProjects([...projects,`Novo project ${Date.now()}` ])
+   const response = await api.post('projects',
+    {
+	title:`Novo project ${Date.now()}`,
+	owner:"Diego Fernande"
+    }); 
+    
+    const project = response.data;
+    setProjects([...projects, project]);
     }
+    
     return(
     <>
     
