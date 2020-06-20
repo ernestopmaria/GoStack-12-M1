@@ -20,7 +20,7 @@ module.exports = {
                 loader: 'babel-loader',
             }
 
-        }
+        },
         {
             test:/\.css$/,
             exclude: /node_modules/,
@@ -29,6 +29,12 @@ module.exports = {
                 {loader: 'css-loader'}
             ]
 
+        },
+        {
+            test:/.*\.(gif|png|jpe?g)$/i,
+            use:{
+                loader: 'file-loader',
+            }
         }
         ]
     },
